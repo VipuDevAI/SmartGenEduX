@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { Menu, X, ChevronRight, Brain, ClipboardCheck, School, MessageCircle, Globe, Zap, Users, Shield, Sparkles, Linkedin, Twitter, Facebook, Instagram, Mail, Phone, MapPin, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import logoImage from "@assets/SmartGenEduX_1766967657455.jpg";
-import parikshanLogo from "@assets/Black_White_Simple_Minimal_Flat_AI_Robot_Technology_Logo_20251_1766969823581.png";
-import connectoLogo from "@assets/20251211_070350_0000_1766969807619.png";
+// Images are in public/images folder
+const logoImage = "/images/SmartGenEduX_1766967657455.jpg";
+const parikshanLogo = "/images/Black_White_Simple_Minimal_Flat_AI_Robot_Technology_Logo_20251_1766969823581.png";
+const connectoLogo = "/images/20251211_070350_0000_1766969807619.png";
 
 function useTheme() {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
