@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronRight, Brain, ClipboardCheck, School, MessageCircle, Globe, Zap, Users, Shield, Sparkles, Linkedin, Twitter, Facebook, Instagram, Mail, Phone, MapPin, Sun, Moon } from "lucide-react";
+import { Menu, X, ChevronRight, Brain, ClipboardCheck, School, MessageCircle, Globe, Zap, Users, Shield, Sparkles, Linkedin, Twitter, Facebook, Instagram, Mail, Phone, MapPin, Sun, Moon, FileQuestion } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 // Images are in public/images folder
@@ -319,6 +319,20 @@ function Products() {
       ],
       isActive: true,
       appLink: "https://school-safal.onrender.com/"
+    },
+    {
+      icon: FileQuestion,
+      title: "Question Bank",
+      description: "Comprehensive question bank for mock tests and automated question paper generation.",
+      features: [
+        "Mock Test Practice Sessions",
+        "Question Paper Generator",
+        "Subject-wise Question Bank",
+        "Difficulty Level Filtering",
+        "Custom Paper Templates"
+      ],
+      isActive: true,
+      appLink: "https://question-bank-y6wx.onrender.com"
     },
     {
       icon: Globe,
