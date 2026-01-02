@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronRight, Brain, ClipboardCheck, School, MessageCircle, Globe, Zap, Users, Shield, Sparkles, Linkedin, Twitter, Facebook, Instagram, Mail, Phone, MapPin, Sun, Moon, FileQuestion } from "lucide-react";
+import { Menu, X, ChevronRight, Brain, ClipboardCheck, School, MessageCircle, Globe, Zap, Users, Shield, Sparkles, Linkedin, Twitter, Facebook, Instagram, Mail, Phone, MapPin, Sun, Moon, FileQuestion, CreditCard, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Link } from "wouter";
 // Images are in public/images folder
 const logoImage = "/images/SmartGenEduX_1766967657455.jpg";
 const parikshanLogo = "/images/Black_White_Simple_Minimal_Flat_AI_Robot_Technology_Logo_20251_1766969823581.png";
@@ -45,6 +47,7 @@ function Navigation() {
   const navLinks = [
     { name: "Home", href: "#home" },
     { name: "Products", href: "#products" },
+    { name: "Pricing", href: "#pricing" },
     { name: "About", href: "#about" },
     { name: "Contact", href: "#contact" },
   ];
@@ -469,12 +472,134 @@ function WhySmartGenEduX() {
   );
 }
 
+function Pricing() {
+  const plans = [
+    {
+      name: "ParikshanAI + Question Bank",
+      description: "Complete AI-powered school management with mock tests and question paper generation",
+      price: 10,
+      unit: "per student/month",
+      features: [
+        "Smart Timetable Generation",
+        "Auto Substitution Management",
+        "Mock Test Practice Sessions",
+        "Question Paper Generator",
+        "Attendance Tracking",
+        "Multi-tenancy Support",
+      ],
+      popular: true,
+    },
+    {
+      name: "School SAFAL",
+      description: "CBSE SAFAL mock test platform with detailed analytics",
+      price: 2,
+      unit: "per student",
+      features: [
+        "CBSE SAFAL Mock Tests",
+        "Performance Analytics",
+        "Student Progress Tracking",
+        "Multi-tenancy Support",
+      ],
+      popular: false,
+    },
+  ];
+
+  return (
+    <section id="pricing" className="py-20 relative">
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-blue/5 rounded-full blur-3xl" />
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-12 animate-slide-up">
+          <h2 className="font-heading font-bold text-3xl sm:text-4xl text-brand-text dark:text-white mb-4">
+            Simple <span className="gradient-text">Pricing</span>
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Affordable pricing designed for schools of all sizes. Pay only for what you use.
+          </p>
+        </div>
+        
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {plans.map((plan, idx) => (
+            <Card
+              key={plan.name}
+              className={`relative p-8 rounded-2xl transition-all duration-300 hover:shadow-xl animate-slide-up ${
+                plan.popular ? "border-2 border-brand-blue" : "glass-card"
+              }`}
+              style={{ animationDelay: `${idx * 0.1}s` }}
+            >
+              {plan.popular && (
+                <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 gradient-blue-orange text-white border-0">
+                  Most Popular
+                </Badge>
+              )}
+              
+              <div className="text-center mb-6">
+                <h3 className="font-heading font-bold text-xl text-brand-text dark:text-white mb-2">
+                  {plan.name}
+                </h3>
+                <p className="text-muted-foreground text-sm mb-4">
+                  {plan.description}
+                </p>
+                <div className="flex items-baseline justify-center gap-1">
+                  <span className="text-4xl font-bold text-brand-blue">₹{plan.price}</span>
+                  <span className="text-muted-foreground text-sm">{plan.unit}</span>
+                </div>
+              </div>
+              
+              <ul className="space-y-3 mb-8">
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex items-center gap-2 text-sm">
+                    <CheckCircle className="h-4 w-4 text-brand-green flex-shrink-0" />
+                    <span className="text-muted-foreground">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              
+              <Link href="/register">
+                <Button 
+                  className={`w-full rounded-full font-semibold ${
+                    plan.popular ? "gradient-blue-orange text-white border-0" : ""
+                  }`}
+                  variant={plan.popular ? "default" : "outline"}
+                  data-testid={`button-get-started-${plan.name.toLowerCase().replace(/\s+/g, "-")}`}
+                >
+                  Get Started
+                  <ChevronRight className="ml-1 h-4 w-4" />
+                </Button>
+              </Link>
+            </Card>
+          ))}
+        </div>
+        
+        <div className="text-center mt-12">
+          <p className="text-muted-foreground text-sm mb-4">
+            Need a custom plan for your institution? Contact us for enterprise pricing.
+          </p>
+          <div className="flex items-center justify-center gap-4 flex-wrap">
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <CreditCard className="h-4 w-4" />
+              <span>Secure payment via Razorpay</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <CheckCircle className="h-4 w-4" />
+              <span>UPI, Cards, Net Banking accepted</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Footer() {
   const currentYear = new Date().getFullYear();
   
   const quickLinks = [
     { name: "Home", href: "#home" },
     { name: "Products", href: "#products" },
+    { name: "Pricing", href: "#pricing" },
     { name: "About", href: "#about" },
     { name: "Contact", href: "#contact" }
   ];
@@ -482,6 +607,7 @@ function Footer() {
   const products = [
     { name: "ParikshanAI", href: "https://parikshan-ai.onrender.com/" },
     { name: "School SAFAL", href: "https://school-safal.onrender.com/" },
+    { name: "Question Bank", href: "https://question-bank-y6wx.onrender.com" },
     { name: "SiteForgeAI", href: "#", comingSoon: true },
     { name: "Patashala ERP", href: "#", comingSoon: true },
     { name: "Connecto", href: "#", comingSoon: true }
@@ -586,6 +712,7 @@ export default function Home() {
       <Navigation />
       <Hero />
       <Products />
+      <Pricing />
       <WhySmartGenEduX />
       <Footer />
     </div>
